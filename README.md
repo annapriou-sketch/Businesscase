@@ -1,6 +1,6 @@
 # Coaching Case
 
-Plateforme bilingue (FR/EN) de préparation aux entretiens de conseil : calcul mental chronométré, études de cas guidées en six étapes, préparation au fit interview (méthode STAR) et suivi de progression.
+Plateforme bilingue (FR/EN) de préparation aux entretiens de conseil : programme de 8 semaines, calcul mental chronométré, bibliothèque d'études de cas guidées en six étapes (filtres, recherche), fit interview (méthode STAR), tests de raisonnement numérique et verbal, suivi de progression.
 
 ## Démarrage
 
@@ -26,7 +26,7 @@ Chaque utilisateur ne voit que ses propres lignes, grâce aux règles RLS défin
 
 ```
 src/
-  main.js            routeur (#/dashboard, #/drill, #/cases/:id, #/fit, #/profile)
+  main.js            routeur (#/dashboard, #/roadmap, #/drill, #/cases/:id, #/fit, #/tests/:id, #/profile)
   styles.css         thème (clair/sombre via prefers-color-scheme)
   lib/
     i18n.js          traductions, t() pour l'interface, tr() pour le contenu {fr, en}
@@ -38,6 +38,8 @@ src/
   content/
     cases.js         banque de cas
     fit.js           banque de questions fit
+    roadmap.js       programme de 8 semaines
+    tests.js         tests de raisonnement numérique et verbal
   views/             un fichier par écran
 supabase/migrations/ schéma SQL + RLS
 tests/               Vitest
@@ -47,6 +49,8 @@ tests/               Vitest
 
 - **Un cas** : ajouter un objet dans `src/content/cases.js`, en suivant la forme des cas existants. Chaque texte est un objet `{ fr, en }`. Les tests vérifient que les deux langues sont complètes.
 - **Une question fit** : ajouter une entrée dans `QUESTIONS` (`src/content/fit.js`).
+- **Une tâche du programme** : ajouter une entrée dans la semaine voulue (`src/content/roadmap.js`), avec un `id` unique et, en option, un lien `href` vers un module.
+- **Une question de test** : ajouter une entrée dans `TESTS.numerical` ou `TESTS.verbal` (`src/content/tests.js`). `answer` est l'index de la bonne option.
 - **Un libellé d'interface** : ajouter la clé dans `src/locales/fr.js` **et** `src/locales/en.js`.
 
 ## Déploiement

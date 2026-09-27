@@ -6,6 +6,9 @@ import { esc } from '../lib/dom.js'
 import CASES from '../content/cases.js'
 
 const RECO_SECONDS = 60
+// Kept across navigations within the session.
+const filters = { search: '', type: 'all', difficulty: 'all', status: 'all' }
+let searchDebounce = null
 
 export default function cases(root, { params }) {
   let timer = null
@@ -18,23 +21,78 @@ export default function cases(root, { params }) {
     current ? player(current) : list()
 
     function list() {
+      const types = [...new Map(CASES.map((c) => [tr(c.type), c.type])).keys()]
+      const q = filters.search.trim().toLowerCase()
+      const visible = CASES.filter((c) => {
+        const s = state[c.id] || {}
+        if (filters.type !== 'all' && tr(c.type) !== filters.type) return false
+        if (filters.difficulty !== 'all' && c.difficulty !== Number(filters.difficulty)) return false
+        if (filters.status === 'todo' && s.done) return false
+        if (filters.status === 'done' && !s.done) return false
+        if (q && ![c.title, c.sector, c.type].some((f) => tr(f).toLowerCase().includes(q))) return false
+        return true
+      })
+      const option = (value, label, current) => `<option value="${esc(value)}"${value === current ? ' selected' : ''}>${esc(label)}</option>`
+
       root.innerHTML = `
         <header class="page-head">
           <h1 class="display">${esc(t('cases.title'))}</h1>
           <p class="muted">${esc(t('cases.intro'))}</p>
         </header>
+        <form class="filters" data-filters>
+          <input type="search" name="search" value="${esc(filters.search)}" placeholder="${esc(t('cases.search'))}" aria-label="${esc(t('cases.search'))}">
+          <select name="type" aria-label="${esc(t('cases.filterType'))}">
+            ${option('all', t('cases.allTypes'), filters.type)}
+            ${types.map((ty) => option(ty, ty, filters.type)).join('')}
+          </select>
+          <select name="difficulty" aria-label="${esc(t('cases.filterDifficulty'))}">
+            ${option('all', t('cases.allLevels'), filters.difficulty)}
+            ${[1, 2, 3].map((d) => option(String(d), t(`cases.level.${d}`), filters.difficulty)).join('')}
+          </select>
+          <select name="status" aria-label="${esc(t('cases.filterStatus'))}">
+            ${['all', 'todo', 'done'].map((st) => option(st, t(`cases.status.${st}`), filters.status)).join('')}
+          </select>
+        </form>
+        <p class="muted mono">${esc(t('cases.count', { n: visible.length, total: CASES.length }))}</p>
         <section class="case-grid">
-          ${CASES.map((c) => {
+          ${visible.map((c) => {
             const s = state[c.id] || {}
             const label = s.done ? t('cases.done') : s.step ? t('cases.resume') : t('cases.start')
             return `
-            <a class="panel case-card${s.done ? ' is-done' : ''}" href="#/cases/${c.id}">
+            <article class="panel case-card${s.done ? ' is-done' : ''}">
               <span class="eyebrow">${esc(tr(c.type))} · ${esc(t('cases.minutes', { n: c.minutes }))}</span>
-              <h2 class="case-title">${esc(tr(c.title))}</h2>
-              <span class="case-cta">${esc(label)} →</span>
-            </a>`
+              <h2 class="case-title"><a href="#/cases/${c.id}">${esc(tr(c.title))}</a></h2>
+              <div class="case-meta">
+                <span class="tag">${esc(tr(c.sector))}</span>
+                <span class="level" title="${esc(t(`cases.level.${c.difficulty}`))}">${'●'.repeat(c.difficulty)}${'○'.repeat(3 - c.difficulty)}</span>
+                ${s.done ? `<span class="mono">${averageScore(s.scores)} / 5</span>` : ''}
+              </div>
+              <div class="case-actions">
+                <a class="case-cta" href="#/cases/${c.id}">${esc(label)} →</a>
+                ${s.done ? `<button class="link" data-redo="${c.id}">${esc(t('cases.redo'))}</button>` : ''}
+              </div>
+            </article>`
           }).join('')}
         </section>`
+
+      const form = root.querySelector('[data-filters]')
+      form.addEventListener('submit', (e) => e.preventDefault())
+      form.addEventListener('change', () => { Object.assign(filters, Object.fromEntries(new FormData(form))); list() })
+      form.search.addEventListener('input', () => {
+        filters.search = form.search.value
+        clearTimeout(searchDebounce)
+        searchDebounce = setTimeout(() => {
+          list()
+          const input = root.querySelector('[name=search]')
+          input.focus()
+          input.setSelectionRange(input.value.length, input.value.length)
+        }, 200)
+      })
+      root.querySelectorAll('[data-redo]').forEach((b) => b.addEventListener('click', async () => {
+        delete state[b.dataset.redo]
+        await persist()
+        location.hash = `#/cases/${b.dataset.redo}`
+      }))
     }
 
     function player(c) {

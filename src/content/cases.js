@@ -5,6 +5,8 @@ export default [
   {
     id: 'bakery-profit',
     minutes: 25,
+    difficulty: 2,
+    sector: { fr: 'Distribution alimentaire', en: 'Food retail' },
     type: { fr: 'Rentabilité', en: 'Profitability' },
     title: { fr: 'Maison Ferrand : des marges qui fondent', en: 'Maison Ferrand: shrinking margins' },
     brief: {
@@ -66,6 +68,8 @@ export default [
   {
     id: 'ebike-market',
     minutes: 20,
+    difficulty: 1,
+    sector: { fr: 'Mobilité', en: 'Mobility' },
     type: { fr: 'Entrée sur un marché', en: 'Market entry' },
     title: { fr: 'VéloVille : faut-il se lancer ?', en: 'VéloVille: should we launch?' },
     brief: {
@@ -127,6 +131,8 @@ export default [
   {
     id: 'gym-premium',
     minutes: 20,
+    difficulty: 2,
+    sector: { fr: 'Loisirs', en: 'Leisure' },
     type: { fr: 'Lancement d’offre', en: 'Product launch' },
     title: { fr: 'FitCité : une offre premium rentable ?', en: 'FitCité: a profitable premium tier?' },
     brief: {
