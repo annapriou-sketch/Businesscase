@@ -26,7 +26,7 @@ export default {
   'dash.next': 'Prochaine étape conseillée',
   'dash.recent': 'Activité récente',
   'dash.none': 'Aucune activité pour l’instant.',
-  'dash.go': 'Y aller',
+  'dash.go': 'Ouvrir',
   'drill.title': 'Calcul mental',
   'drill.intro': '2 minutes, un maximum de bonnes réponses. Arrondis acceptés à ±2 % pour les pourcentages et les divisions.',
   'drill.mode': 'Type de calcul',

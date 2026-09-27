@@ -1,3 +1,5 @@
+import '@fontsource-variable/manrope'
+import '@fontsource/ibm-plex-mono/500.css'
 import './styles.css'
 import { t, getLang, setLang } from './lib/i18n.js'
 import { getUser, signOut } from './lib/auth.js'
