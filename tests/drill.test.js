@@ -16,6 +16,7 @@ describe('parseAnswer', () => {
     expect(parseAnswer('-5')).toBe(-5)
     expect(parseAnswer('1,250')).toBe(1250)
     expect(parseAnswer('12,500.5')).toBe(12500.5)
+    expect(parseAnswer('\u22124')).toBe(-4)
   })
   it('rejects garbage', () => {
     expect(parseAnswer('')).toBeNaN()

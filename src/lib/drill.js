@@ -39,7 +39,7 @@ export function generateQuestion(mode = 'mixed', rng = Math.random, lang = 'fr')
 /** Accepts "1 250", "1,250", "1,5", "12.5%", "-5". */
 export function parseAnswer(raw) {
   if (raw == null) return NaN
-  let cleaned = String(raw).trim().replace(/[\s\u00a0\u202f%]/g, '')
+  let cleaned = String(raw).trim().replace(/[\s\u00a0\u202f%]/g, '').replace(/\u2212/g, '-')
   // "1,250" or "12,500.5": commas are thousands separators (English format).
   if (/^-?\d{1,3}(,\d{3})+(\.\d+)?$/.test(cleaned)) cleaned = cleaned.replace(/,/g, '')
   else cleaned = cleaned.replace(',', '.')

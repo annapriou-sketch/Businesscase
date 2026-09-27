@@ -604,4 +604,330 @@ export default [
       },
     },
   },
+  {
+    id: 'van-maintenance',
+    minutes: 25,
+    difficulty: 2,
+    type: { fr: 'Croissance', en: 'Growth' },
+    sector: { fr: 'Location de véhicules', en: 'Vehicle leasing' },
+    title: { fr: 'Utilia : trouver la croissance hors de la location', en: 'Utilia: finding growth beyond leasing' },
+    brief: {
+      fr: 'Utilia loue des véhicules utilitaires aux entreprises françaises, entretien inclus, avec un contrat de 3 à 5 ans. Le parc d’utilitaires des entreprises progresse lentement (+2 % par an), mais le marché de la location avec entretien recule, et le chiffre d’affaires d’Utilia stagne à 432 M€. Le directeur général veut une stratégie de croissance organique crédible à trois ans.',
+      en: 'Utilia leases light commercial vans to French businesses, maintenance included, on 3- to 5-year contracts. The business van fleet grows slowly (+2% a year), but the lease-with-maintenance market is shrinking and Utilia’s revenue is flat at €432M. The CEO wants a credible organic growth strategy for the next three years.',
+    },
+    clarifications: [
+      { q: { fr: 'Comment Utilia maintient-elle son chiffre d’affaires dans un marché qui recule ?', en: 'How does Utilia hold revenue in a shrinking market?' }, a: { fr: 'Par de petites acquisitions de loueurs régionaux ces dernières années.', en: 'Through small acquisitions of regional lessors in recent years.' } },
+      { q: { fr: 'Les offres sont-elles différenciées ?', en: 'Are offers differentiated?' }, a: { fr: 'Très peu : les clients comparent surtout le loyer mensuel. Augmenter les prix n’est pas une option.', en: 'Barely: customers mainly compare the monthly rent. Raising prices is not an option.' } },
+      { q: { fr: 'Qui sont les entreprises qui achètent leurs véhicules ?', en: 'Who are the companies that buy their vans?' }, a: { fr: 'Surtout de grands réseaux (distribution, BTP, énergie) qui préfèrent posséder leur flotte mais l’entretiennent eux-mêmes, souvent mal.', en: 'Mostly large networks (retail, construction, utilities) that prefer to own their fleet but maintain it themselves, often poorly.' } },
+      { q: { fr: 'Utilia dispose-t-elle d’ateliers ?', en: 'Does Utilia have workshops?' }, a: { fr: 'Oui, 85 ateliers en France, utilisés à 70 % de leur capacité.', en: 'Yes, 85 workshops in France, running at 70% capacity.' } },
+    ],
+    structure: {
+      fr: ['Les quatre voies de croissance : clients actuels / nouveaux × offres actuelles / nouvelles', 'Dynamique du marché : quel segment gagne des parts ?', 'Besoins du segment en croissance et offre adaptée', 'Capacités d’Utilia (ateliers, réseau, marque) et risques (cannibalisation)'],
+      en: ['The four growth paths: existing / new customers × existing / new offers', 'Market dynamics: which segment is gaining share?', 'Needs of the growing segment and a fitting offer', 'Utilia’s capabilities (workshops, network, brand) and risks (cannibalisation)'],
+    },
+    math: {
+      question: {
+        fr: 'Utilia lance une offre « entretien seul » et capte 2 % du segment des flottes détenues et entretenues en interne. De combien (en %) son chiffre d’affaires augmente-t-il ?',
+        en: 'Utilia launches a maintenance-only offer and wins 2% of the owned, self-maintained segment. By how much (in %) does its revenue grow?',
+      },
+      table: {
+        headers: { fr: ['Donnée', 'Valeur'], en: ['Data', 'Value'] },
+        rows: [
+          [{ fr: 'Parc d’utilitaires des entreprises', en: 'Business van fleet' }, '1 200 000'],
+          [{ fr: 'Flottes détenues et entretenues en interne', en: 'Owned and self-maintained fleets' }, '55 %'],
+          [{ fr: 'Location avec entretien', en: 'Lease with maintenance' }, '25 %'],
+          [{ fr: 'Location longue durée sans entretien', en: 'Long-term lease without maintenance' }, '12 %'],
+          [{ fr: 'Achat financé', en: 'Financed purchase' }, '8 %'],
+          [{ fr: 'Véhicules loués par Utilia', en: 'Vans leased by Utilia' }, '60 000'],
+          [{ fr: 'CA annuel par véhicule loué (loyer + entretien)', en: 'Annual revenue per leased van (rent + maintenance)' }, '7 200 €'],
+          [{ fr: 'CA annuel par véhicule en « entretien seul »', en: 'Annual revenue per maintenance-only van' }, '900 €'],
+        ],
+      },
+      answer: 2.75,
+      unit: '%',
+      tolerance: 0.02,
+      absTolerance: 0.06,
+      explanation: {
+        fr: '2 % × 55 % × 1 200 000 = 13 200 véhicules, soit +22 % de véhicules suivis. Mais en valeur : 13 200 × 900 € = 11,9 M€, pour un CA actuel de 60 000 × 7 200 € = 432 M€, soit seulement +2,75 %. Piège classique : confondre la croissance en volume et la croissance en chiffre d’affaires.',
+        en: '2% × 55% × 1,200,000 = 13,200 vans, i.e. +22% vans under contract. But in value: 13,200 × €900 = €11.9M against current revenue of 60,000 × €7,200 = €432M, only +2.75%. Classic trap: confusing volume growth with revenue growth.',
+      },
+    },
+    brainstorm: {
+      prompt: { fr: 'Quels risques et défis pose le lancement d’une offre « entretien seul », moins chère ?', en: 'What risks and challenges come with launching a cheaper maintenance-only offer?' },
+      ideas: [
+        { label: { fr: 'Cannibalisation : des clients actuels basculent vers l’offre moins chère', en: 'Cannibalisation: existing customers switch to the cheaper offer' }, keywords: ['cannibal', 'bascul', 'switch', 'clients actuels', 'existing customer'] },
+        { label: { fr: 'Capacité des ateliers et niveau de service', en: 'Workshop capacity and service levels' }, keywords: ['atelier', 'workshop', 'capacité', 'capacity', 'service'] },
+        { label: { fr: 'Couverture nationale exigée par les grands réseaux', en: 'National coverage required by large networks' }, keywords: ['couverture', 'coverage', 'national', 'réseau', 'network', 'maillage'] },
+        { label: { fr: 'Véhicules de marques et d’âges variés (pièces, compétences)', en: 'Vans of varied brands and ages (parts, skills)' }, keywords: ['marque', 'brand', 'pièce', 'part', 'âge', 'age', 'compétence', 'skill'] },
+        { label: { fr: 'Réaction des concurrents et des concessionnaires', en: 'Reaction from competitors and dealers' }, keywords: ['concurren', 'compet', 'concession', 'dealer'] },
+        { label: { fr: 'Rentabilité faible par véhicule : viser les grandes flottes', en: 'Low profit per van: target large fleets' }, keywords: ['rentab', 'profit', 'marge', 'margin', 'grande flotte', 'large fleet', 'volume'] },
+      ],
+    },
+    reco: {
+      prompt: { fr: 'Le directeur général vous demande votre recommandation.', en: 'The CEO asks for your recommendation.' },
+      model: {
+        fr: 'La croissance ne viendra pas de la location, dont le marché recule, mais des entreprises qui possèdent leur flotte : c’est le segment qui gagne des parts. Je recommande une offre « entretien seul » réservée aux flottes de plus de 50 véhicules, qui s’appuie sur nos ateliers aujourd’hui utilisés à 70 %. Attention : 2 % de ce segment ne rapporte qu’environ 12 M€ ; il faut donc viser plus haut (5 à 8 % en trois ans) et protéger l’offre de location en réservant l’entretien seul aux véhicules que le client possède déjà.',
+        en: 'Growth will not come from leasing, a shrinking market, but from companies that own their fleet: that segment is gaining share. I recommend a maintenance-only offer for fleets of 50+ vans, using our workshops, now at 70% capacity. Caution: 2% of the segment is only about €12M, so the ambition must be higher (5–8% within three years), and the leasing offer should be protected by limiting maintenance-only contracts to vans the customer already owns.',
+      },
+    },
+  },
+  {
+    id: 'private-label-biscuits',
+    minutes: 25,
+    difficulty: 3,
+    type: { fr: 'Menace concurrentielle', en: 'Competitive threat' },
+    sector: { fr: 'Agroalimentaire', en: 'Food & beverage' },
+    title: { fr: 'Biscuiterie Armor face aux marques de distributeur', en: 'Biscuiterie Armor vs private labels' },
+    brief: {
+      fr: 'Biscuiterie Armor est le leader des biscuits de marque en France. Depuis quatre ans, les marques de distributeur (MDD) progressent fortement dans la catégorie. La direction se demande à quel point cette tendance la menace et comment réagir : faut-il se mettre, elle aussi, à fabriquer pour les distributeurs ?',
+      en: 'Biscuiterie Armor is the leading branded biscuit maker in France. For four years, private labels have been growing fast in the category. Management wonders how serious the threat is and how to respond: should it start manufacturing for retailers too?',
+    },
+    clarifications: [
+      { q: { fr: 'Le marché global évolue-t-il ?', en: 'Is the overall market changing?' }, a: { fr: 'Il est stable à 2 milliards d’euros par an.', en: 'It is flat at €2 billion a year.' } },
+      { q: { fr: 'Qui fabrique les MDD ?', en: 'Who makes the private labels?' }, a: { fr: 'Des PME, et depuis deux ans le numéro 2 du marché, qui utilise ainsi ses capacités excédentaires.', en: 'Small manufacturers and, for two years, the number-two player, which uses its spare capacity this way.' } },
+      { q: { fr: 'La qualité est-elle comparable ?', en: 'Is the quality comparable?' }, a: { fr: 'Les tests consommateurs donnent un net avantage aux marques sur le goût, mais l’écart se réduit.', en: 'Consumer tests show a clear taste advantage for brands, but the gap is narrowing.' } },
+      { q: { fr: 'Pourquoi les distributeurs poussent-ils leurs MDD ?', en: 'Why do retailers push their private labels?' }, a: { fr: 'Pour fidéliser et se différencier ; ils le font dans toutes les catégories, dans un contexte d’inflation où les clients cherchent des prix bas.', en: 'To build loyalty and differentiate; they do it across all categories, amid inflation with shoppers seeking low prices.' } },
+    ],
+    structure: {
+      fr: ['Ampleur de la menace : évolution des parts MDD et des ventes du client', 'Moteurs de la demande MDD : consommateurs, distributeurs, fabricants', 'Économie comparée : marge marque vs MDD pour le fabricant et le distributeur', 'Options : fabriquer des MDD, renforcer la marque, ou les deux'],
+      en: ['Size of the threat: private label share and client sales trends', 'Drivers of private label demand: shoppers, retailers, manufacturers', 'Comparative economics: brand vs private label margin for maker and retailer', 'Options: make private labels, strengthen the brand, or both'],
+    },
+    math: {
+      question: {
+        fr: 'Entre 2021 et 2025, de combien (en %) les ventes de Biscuiterie Armor ont-elles évolué ?',
+        en: 'Between 2021 and 2025, by how much (in %) did Biscuiterie Armor’s sales change?',
+      },
+      table: {
+        headers: { fr: ['Donnée', '2021', '2025'], en: ['Data', '2021', '2025'] },
+        rows: [
+          [{ fr: 'Marché total (M€)', en: 'Total market (€M)' }, 2000, 2000],
+          [{ fr: 'Part des MDD', en: 'Private label share' }, '18 %', '30 %'],
+          [{ fr: 'Part d’Armor dans les marques', en: 'Armor’s share of branded' }, '40 %', '45 %'],
+        ],
+      },
+      chart: {
+        type: 'line',
+        title: { fr: 'Parts de marché', en: 'Market shares' },
+        unit: '%',
+        labels: ['2021', '2022', '2023', '2024', '2025'],
+        series: [
+          { name: { fr: 'MDD (du marché total)', en: 'Private labels (of total market)' }, values: [18, 21, 24, 27, 30] },
+          { name: { fr: 'Armor (des marques)', en: 'Armor (of branded)' }, values: [40, 41, 43, 44, 45] },
+        ],
+      },
+      answer: -3.96,
+      unit: '%',
+      tolerance: 0.02,
+      absTolerance: 0.1,
+      explanation: {
+        fr: '2021 : 2 000 × 82 % × 40 % = 656 M€. 2025 : 2 000 × 70 % × 45 % = 630 M€. Soit −4 %. Armor gagne des parts dans les marques, mais le segment des marques rétrécit plus vite : ses ventes baissent quand même.',
+        en: '2021: 2,000 × 82% × 40% = €656M. 2025: 2,000 × 70% × 45% = €630M. That is −4%. Armor gains share among brands, but the branded segment shrinks faster, so its sales still fall.',
+      },
+    },
+    brainstorm: {
+      prompt: { fr: 'Si Armor reste sur la marque seule, comment défendre sa position ?', en: 'If Armor stays brand-only, how can it defend its position?' },
+      ideas: [
+        { label: { fr: 'Innovation produit difficile à copier', en: 'Hard-to-copy product innovation' }, keywords: ['innov', 'nouveau produit', 'new product', 'recette', 'recipe', 'copier', 'copy'] },
+        { label: { fr: 'Investir dans la marque et la publicité', en: 'Invest in brand and advertising' }, keywords: ['marque', 'brand', 'publicité', 'advertis', 'marketing', 'communication'] },
+        { label: { fr: 'Gérer l’écart de prix (formats, promotions ciblées)', en: 'Manage the price gap (formats, targeted promotions)' }, keywords: ['prix', 'price', 'écart', 'gap', 'promo', 'format'] },
+        { label: { fr: 'Partenariats avec les distributeurs (visibilité en rayon)', en: 'Retailer partnerships (shelf visibility)' }, keywords: ['distributeur', 'retailer', 'partenariat', 'partner', 'rayon', 'shelf', 'négoci', 'negotia'] },
+        { label: { fr: 'Nouveaux canaux (hard discount, e-commerce, hors domicile)', en: 'New channels (discounters, online, out-of-home)' }, keywords: ['canal', 'channel', 'discount', 'e-commerce', 'online', 'hors domicile', 'out-of-home'] },
+        { label: { fr: 'Réduire les coûts pour financer l’écart de prix', en: 'Cut costs to fund the price gap' }, keywords: ['coût', 'cost', 'productiv', 'efficac', 'efficien'] },
+      ],
+    },
+    reco: {
+      prompt: { fr: 'Le comité exécutif veut une position claire.', en: 'The executive committee wants a clear position.' },
+      model: {
+        fr: 'La menace est réelle : malgré +5 points de part dans les marques, les ventes d’Armor ont reculé de 4 % en quatre ans, et les moteurs des MDD (inflation, stratégie des distributeurs) vont durer. Je recommande de défendre la marque (innovation, écart de prix maîtrisé sur les produits phares) et d’étudier une production MDD limitée, sur des gammes d’entrée où Armor n’est pas présente, pour utiliser la capacité sans cannibaliser la marque. Prochaine étape : calculer la marge d’une ligne MDD et tester l’élasticité prix sur trois références.',
+        en: 'The threat is real: despite +5 points of branded share, Armor’s sales fell 4% in four years, and the drivers of private labels (inflation, retailer strategy) will last. I recommend defending the brand (innovation, a controlled price gap on hero products) and studying limited private-label production on entry ranges where Armor is absent, to use capacity without cannibalising the brand. Next step: model the margin of a private-label line and test price elasticity on three products.',
+      },
+    },
+  },
+  {
+    id: 'medtech-distribution',
+    minutes: 30,
+    difficulty: 3,
+    type: { fr: 'Opérations', en: 'Operations' },
+    sector: { fr: 'Dispositifs médicaux', en: 'Medical devices' },
+    title: { fr: 'Medicor : un ou trois entrepôts en Europe ?', en: 'Medicor: one warehouse or three in Europe?' },
+    brief: {
+      fr: 'Medicor, fabricant lyonnais de dispositifs médicaux, se lance en Europe du Nord et de l’Est après le succès de ses premiers essais. Les hôpitaux attendent une livraison en 24 heures. Deux schémas logistiques sont sur la table : un entrepôt central aux Pays-Bas avec transport express, ou trois entrepôts régionaux. Le directeur des opérations vous demande lequel choisir.',
+      en: 'Medicor, a Lyon-based medical device maker, is expanding into Northern and Eastern Europe after successful pilots. Hospitals expect 24-hour delivery. Two logistics set-ups are on the table: one central warehouse in the Netherlands with express shipping, or three regional warehouses. The operations director asks which to choose.',
+    },
+    clarifications: [
+      { q: { fr: 'Quels critères comptent le plus ?', en: 'Which criteria matter most?' }, a: { fr: 'Le coût total et le taux de livraison en 24 h.', en: 'Total cost and the 24-hour delivery rate.' } },
+      { q: { fr: 'Que vaut un point de service en plus ?', en: 'What is one extra point of service worth?' }, a: { fr: 'Les achats estiment qu’un point de livraison en 24 h en plus vaut environ 0,2 M€ de marge par an (commandes non perdues).', en: 'Sales estimate one extra point of 24-hour delivery is worth about €0.2M of margin a year (orders not lost).' } },
+      { q: { fr: 'Les volumes vont-ils croître ?', en: 'Will volumes grow?' }, a: { fr: 'Oui, les prévisions tablent sur un doublement en cinq ans.', en: 'Yes, forecasts expect volumes to double in five years.' } },
+    ],
+    structure: {
+      fr: ['Coûts : entreposage, transport, stocks (immobilisation et coût de détention)', 'Niveau de service : part des livraisons en 24 h', 'Arbitrage coût / service, à la lumière des marges du secteur', 'Autres critères : croissance future, flexibilité, douanes et réglementation'],
+      en: ['Costs: warehousing, transport, inventory (capital tied up and holding cost)', 'Service level: share of 24-hour deliveries', 'Cost / service trade-off, given sector margins', 'Other criteria: future growth, flexibility, customs and regulation'],
+    },
+    math: {
+      question: {
+        fr: 'Quel est l’écart de coût annuel total entre les deux options (en M€) ?',
+        en: 'What is the total annual cost difference between the two options (in €M)?',
+      },
+      table: {
+        headers: { fr: ['Coût annuel', '1 entrepôt central', '3 entrepôts régionaux'], en: ['Annual cost', '1 central warehouse', '3 regional warehouses'] },
+        rows: [
+          [{ fr: 'Entreposage (M€)', en: 'Warehousing (€M)' }, 1.2, 2.1],
+          [{ fr: 'Colis par an', en: 'Parcels per year' }, 80000, 80000],
+          [{ fr: 'Transport par colis (€)', en: 'Transport per parcel (€)' }, 18, 9],
+          [{ fr: 'Stock moyen (M€)', en: 'Average inventory (€M)' }, 8, 12],
+          [{ fr: 'Coût de détention du stock', en: 'Inventory holding cost' }, '20 %', '20 %'],
+          [{ fr: 'Livraisons en 24 h', en: '24-hour deliveries' }, '95 %', '98 %'],
+        ],
+      },
+      answer: 0.98,
+      unit: 'M€',
+      tolerance: 0.02,
+      absTolerance: 0.03,
+      explanation: {
+        fr: 'Central : 1,2 + 80 000 × 18 € (1,44) + 20 % × 8 (1,6) = 4,24 M€. Régional : 2,1 + 80 000 × 9 € (0,72) + 20 % × 12 (2,4) = 5,22 M€. Écart : 0,98 M€ par an en faveur de l’entrepôt central. Les 3 points de service en plus du régional valent environ 3 × 0,2 = 0,6 M€ : moins que le surcoût.',
+        en: 'Central: 1.2 + 80,000 × €18 (1.44) + 20% × 8 (1.6) = €4.24M. Regional: 2.1 + 80,000 × €9 (0.72) + 20% × 12 (2.4) = €5.22M. Gap: €0.98M a year in favour of the central warehouse. The regional option’s extra 3 service points are worth about 3 × 0.2 = €0.6M: less than the extra cost.',
+      },
+    },
+    brainstorm: {
+      prompt: { fr: 'Quels autres éléments faut-il intégrer avant de décider ?', en: 'What else should be factored in before deciding?' },
+      ideas: [
+        { label: { fr: 'Croissance des volumes (le transport express coûte plus à grande échelle)', en: 'Volume growth (express shipping costs more at scale)' }, keywords: ['croissance', 'growth', 'volume', 'doubl', 'échelle', 'scale'] },
+        { label: { fr: 'Option hybride (hub + stocks avancés pour les produits critiques)', en: 'Hybrid option (hub + forward stock for critical items)' }, keywords: ['hybride', 'hybrid', 'mixte', 'mix', 'avancé', 'forward', 'critique', 'critical'] },
+        { label: { fr: 'Réduire les stocks (mutualisation, prévisions, fréquence)', en: 'Reduce inventory (pooling, forecasting, frequency)' }, keywords: ['stock', 'inventory', 'mutualis', 'pooling', 'prévision', 'forecast'] },
+        { label: { fr: 'Péremption et traçabilité réglementaire', en: 'Expiry dates and regulatory traceability' }, keywords: ['péremption', 'expir', 'traçab', 'traceab', 'réglement', 'regulat', 'mdr'] },
+        { label: { fr: 'Risque de rupture (grève, météo, prestataire unique)', en: 'Disruption risk (strikes, weather, single carrier)' }, keywords: ['risque', 'risk', 'rupture', 'disrupt', 'grève', 'strike', 'dépendance'] },
+        { label: { fr: 'Capital immobilisé dans les stocks', en: 'Capital tied up in inventory' }, keywords: ['capital', 'trésorerie', 'cash', 'immobilis', 'tied up', 'bfr', 'working capital'] },
+      ],
+    },
+    reco: {
+      prompt: { fr: 'Le directeur des opérations attend votre choix.', en: 'The operations director awaits your choice.' },
+      model: {
+        fr: 'Je recommande l’entrepôt central : il coûte environ 1 M€ de moins par an et immobilise 4 M€ de stock en moins, alors que les 3 points de service supplémentaires du schéma régional ne valent qu’environ 0,6 M€. Deux garde-fous : un stock avancé pour les 20 références critiques dans les pays les plus éloignés, et une révision du schéma quand les volumes auront augmenté de 50 %, car le coût de l’express grandit avec eux.',
+        en: 'I recommend the central warehouse: it costs about €1M less a year and ties up €4M less inventory, while the regional set-up’s extra 3 service points are worth only about €0.6M. Two safeguards: forward stock for the 20 critical items in the most distant countries, and a review once volumes have grown 50%, since express costs grow with them.',
+      },
+    },
+  },
+  {
+    id: 'engineering-offshoring',
+    minutes: 25,
+    difficulty: 2,
+    type: { fr: 'Réduction de coûts', en: 'Cost reduction' },
+    sector: { fr: 'Biens d’équipement', en: 'Capital goods' },
+    title: { fr: 'Grues Delorme : délocaliser l’ingénierie ?', en: 'Grues Delorme: offshore engineering?' },
+    brief: {
+      fr: 'Grues Delorme conçoit et fabrique des grues et engins de chantier vendus dans le monde entier. Elle achète chaque année 400 000 heures d’ingénierie (dessin, calcul, modélisation) à une soixantaine de prestataires, surtout en France. La direction financière vous demande de réduire ce poste de dépenses.',
+      en: 'Grues Delorme designs and builds cranes and construction machinery sold worldwide. Each year it buys 400,000 hours of engineering (drafting, calculations, modelling) from about sixty suppliers, mostly in France. The CFO asks you to reduce this spend.',
+    },
+    clarifications: [
+      { q: { fr: 'Comment la dépense est-elle répartie entre prestataires ?', en: 'How is spend split across suppliers?' }, a: { fr: '20 prestataires représentent 80 % des heures.', en: '20 suppliers account for 80% of hours.' } },
+      { q: { fr: 'Travaille-t-on déjà avec des pays à bas coût ?', en: 'Is work already done in low-cost countries?' }, a: { fr: 'Oui, 10 % des heures sont réalisées en Inde.', en: 'Yes, 10% of hours are done in India.' } },
+      { q: { fr: 'Toutes les tâches sont-elles délocalisables ?', en: 'Can all tasks be offshored?' }, a: { fr: 'Non : les études liées à la sécurité et les travaux sur site doivent rester en France. On estime qu’au plus 60 % des heures peuvent partir.', en: 'No: safety-critical studies and on-site work must stay in France. At most 60% of hours can move.' } },
+    ],
+    structure: {
+      fr: ['Réduire le besoin : standardiser les demandes, limiter les reprises', 'Mieux acheter : concentrer les volumes, renégocier les taux', 'Faire ou faire faire : internaliser certaines compétences', 'Délocaliser : économies, coûts cachés, risques'],
+      en: ['Reduce demand: standardise requests, limit rework', 'Buy better: concentrate volumes, renegotiate rates', 'Make or buy: insource some skills', 'Offshore: savings, hidden costs, risks'],
+    },
+    math: {
+      question: {
+        fr: 'Quelle économie nette la première année (en M€) si la part délocalisée passe de 10 % à 60 % des heures ?',
+        en: 'What net saving in year one (in €M) if the offshored share rises from 10% to 60% of hours?',
+      },
+      table: {
+        headers: { fr: ['Donnée', 'Valeur'], en: ['Data', 'Value'] },
+        rows: [
+          [{ fr: 'Heures achetées par an', en: 'Hours bought per year' }, '400 000'],
+          [{ fr: 'Taux moyen en France', en: 'Average rate in France' }, '65 €/h'],
+          [{ fr: 'Taux moyen en Inde', en: 'Average rate in India' }, '28 €/h'],
+          [{ fr: 'Surcoût de coordination (1re année)', en: 'Coordination overhead (year one)' }, { fr: '15 % des heures délocalisées, payées au taux France', en: '15% of offshored hours, paid at the French rate' }],
+        ],
+      },
+      answer: 5.45,
+      unit: 'M€',
+      tolerance: 0.02,
+      explanation: {
+        fr: 'Heures transférées : 50 % × 400 000 = 200 000 h. Économie brute : 200 000 × (65 − 28) = 7,4 M€. Coordination : 200 000 × 15 % × 65 € = 1,95 M€. Économie nette : 5,45 M€ la première année, davantage ensuite quand la coordination diminue.',
+        en: 'Hours moved: 50% × 400,000 = 200,000 h. Gross saving: 200,000 × (65 − 28) = €7.4M. Coordination: 200,000 × 15% × €65 = €1.95M. Net saving: €5.45M in year one, more afterwards as coordination falls.',
+      },
+    },
+    brainstorm: {
+      prompt: { fr: 'Au-delà du taux horaire, quels freins et coûts cachés faut-il anticiper ?', en: 'Beyond the hourly rate, which obstacles and hidden costs should be anticipated?' },
+      ideas: [
+        { label: { fr: 'Protection de la propriété intellectuelle', en: 'Intellectual property protection' }, keywords: ['propriété intellectuelle', 'intellectual', 'ip ', 'brevet', 'patent', 'confidential'] },
+        { label: { fr: 'Qualité et reprises (coûts de garantie)', en: 'Quality and rework (warranty costs)' }, keywords: ['qualité', 'quality', 'reprise', 'rework', 'erreur', 'error', 'garantie', 'warranty', 'défaut', 'defect'] },
+        { label: { fr: 'Courbe d’apprentissage des nouvelles équipes', en: 'Learning curve of new teams' }, keywords: ['apprentissage', 'learning', 'formation', 'training', 'montée en compétence', 'ramp'] },
+        { label: { fr: 'Décalage horaire, langue et culture', en: 'Time zones, language and culture' }, keywords: ['horaire', 'time zone', 'décalage', 'langue', 'language', 'culture'] },
+        { label: { fr: 'Réaction des équipes et image en France', en: 'Staff reaction and image in France' }, keywords: ['social', 'image', 'syndicat', 'union', 'réputation', 'reputation', 'équipe', 'staff'] },
+        { label: { fr: 'Inflation salariale et change dans le pays cible', en: 'Wage inflation and currency in the target country' }, keywords: ['inflation', 'salaire', 'wage', 'change', 'currency', 'roupie', 'rupee'] },
+      ],
+    },
+    reco: {
+      prompt: { fr: 'La directrice financière vous demande de conclure.', en: 'The CFO asks you to conclude.' },
+      model: {
+        fr: 'Je recommande de porter la part délocalisée à 60 % sur trois ans, pour une économie nette d’environ 5,5 M€ dès la première année, soit 21 % du poste. En parallèle, concentrer les volumes sur 8 à 10 prestataires stratégiques et standardiser les demandes internes. Conditions : commencer par les tâches de dessin les plus simples, protéger la propriété intellectuelle par contrat, et suivre le taux de reprise mois par mois.',
+        en: 'I recommend raising the offshored share to 60% over three years, for a net saving of about €5.5M from year one, 21% of the spend. In parallel, concentrate volumes on 8–10 strategic suppliers and standardise internal requests. Conditions: start with the simplest drafting tasks, protect IP contractually, and track the rework rate monthly.',
+      },
+    },
+  },
+  {
+    id: 'shared-services',
+    minutes: 30,
+    difficulty: 3,
+    type: { fr: 'Réduction de coûts', en: 'Cost reduction' },
+    sector: { fr: 'Industrie', en: 'Manufacturing' },
+    title: { fr: 'Groupe Hexa : des fonctions support à reconstruire', en: 'Groupe Hexa: rebuilding support functions' },
+    brief: {
+      fr: 'Groupe Hexa est né il y a deux ans de la fusion de deux industriels. Il réalise 3 Md€ de chiffre d’affaires, mais chaque division a gardé ses propres équipes finance, achats, RH et informatique, sur des systèmes anciens et incompatibles. Le directeur financier veut créer un centre de services partagés et faire passer la marge opérationnelle de 8 % à 10 %.',
+      en: 'Groupe Hexa was formed two years ago by merging two manufacturers. It has €3bn in revenue, but each division kept its own finance, procurement, HR and IT teams, on old, incompatible systems. The CFO wants to create a shared services centre and lift the operating margin from 8% to 10%.',
+    },
+    clarifications: [
+      { q: { fr: 'Quelle est la marge brute ?', en: 'What is the gross margin?' }, a: { fr: '30 %, et elle ne doit pas bouger.', en: '30%, and it should stay unchanged.' } },
+      { q: { fr: 'Quelles fonctions sont concernées ?', en: 'Which functions are in scope?' }, a: { fr: 'Finance, achats, RH, immobilier et informatique : 60 % des frais généraux.', en: 'Finance, procurement, HR, real estate and IT: 60% of overheads.' } },
+      { q: { fr: 'Les divisions sont-elles favorables ?', en: 'Are the divisions supportive?' }, a: { fr: 'Pas vraiment : certains directeurs menacent de lancer leurs propres solutions si rien ne change vite.', en: 'Not really: some division heads threaten to build their own solutions if nothing changes soon.' } },
+    ],
+    structure: {
+      fr: ['Objectif chiffré : économies nécessaires pour passer de 8 % à 10 % de marge', 'Périmètre : quelles fonctions, quel potentiel (finance et RH en tête)', 'Organisation et gouvernance : qui pilote, relation avec les divisions', 'Systèmes : remplacement, externalisation', 'Investissement et retour sur investissement'],
+      en: ['Numeric goal: savings needed to go from 8% to 10% margin', 'Scope: which functions, what potential (finance and HR first)', 'Organisation and governance: who leads, relationship with divisions', 'Systems: replacement, outsourcing', 'Investment and return'],
+    },
+    math: {
+      question: {
+        fr: 'De combien (en %) faut-il réduire les coûts du périmètre des services partagés pour atteindre 10 % de marge opérationnelle ?',
+        en: 'By how much (in %) must shared-services scope costs fall to reach a 10% operating margin?',
+      },
+      table: {
+        headers: { fr: ['Donnée', 'Valeur'], en: ['Data', 'Value'] },
+        rows: [
+          [{ fr: 'Chiffre d’affaires', en: 'Revenue' }, '3 000 M€'],
+          [{ fr: 'Marge brute', en: 'Gross margin' }, '30 %'],
+          [{ fr: 'Marge opérationnelle actuelle', en: 'Current operating margin' }, '8 %'],
+          [{ fr: 'Marge opérationnelle visée', en: 'Target operating margin' }, '10 %'],
+          [{ fr: 'Part des frais généraux dans le périmètre', en: 'Share of overheads in scope' }, '60 %'],
+        ],
+      },
+      answer: 15.15,
+      unit: '%',
+      tolerance: 0.02,
+      explanation: {
+        fr: 'Frais généraux actuels : 30 % − 8 % = 22 % × 3 000 = 660 M€. Cible : 20 % = 600 M€, soit 60 M€ d’économies. Périmètre : 60 % × 660 = 396 M€. 60 / 396 ≈ 15 %. C’est ambitieux mais cohérent avec ce qu’obtiennent en général les projets de services partagés bien menés.',
+        en: 'Current overheads: 30% − 8% = 22% × 3,000 = €660M. Target: 20% = €600M, i.e. €60M of savings. Scope: 60% × 660 = €396M. 60 / 396 ≈ 15%. Ambitious but consistent with what well-run shared services projects typically achieve.',
+      },
+    },
+    brainstorm: {
+      prompt: { fr: 'Quelles difficultés prévoir, et comment les désamorcer ?', en: 'Which difficulties should be expected, and how can they be defused?' },
+      ideas: [
+        { label: { fr: 'Résistance des divisions (perte de contrôle)', en: 'Division resistance (loss of control)' }, keywords: ['résistance', 'resist', 'division', 'contrôle', 'control', 'adhésion', 'buy-in'] },
+        { label: { fr: 'Gouvernance claire et engagements de service', en: 'Clear governance and service commitments' }, keywords: ['gouvernance', 'governance', 'sla', 'engagement de service', 'service level', 'pmo', 'pilotage'] },
+        { label: { fr: 'Remplacement des systèmes informatiques', en: 'Replacing IT systems' }, keywords: ['informatique', 'système', 'system', 'erp', 'logiciel', 'software', 'legacy'] },
+        { label: { fr: 'Accompagnement social (mobilités, reconversions)', en: 'People side (relocations, reskilling)' }, keywords: ['social', 'salarié', 'employee', 'reconversion', 'reskill', 'mobilité', 'syndicat', 'union'] },
+        { label: { fr: 'Commencer par finance et RH, où les gains sont les plus élevés', en: 'Start with finance and HR, where gains are highest' }, keywords: ['finance', 'rh', 'hr', 'comptab', 'accounting', 'paie', 'payroll', 'priori'] },
+        { label: { fr: 'Arbitrer ce qu’on externalise et ce qu’on garde', en: 'Decide what to outsource and what to keep' }, keywords: ['externalis', 'outsourc', 'prestataire', 'provider', 'offshore', 'délocalis'] },
+      ],
+    },
+    reco: {
+      prompt: { fr: 'Le directeur financier présente votre approche au comité exécutif demain.', en: 'The CFO presents your approach to the executive committee tomorrow.' },
+      model: {
+        fr: 'Atteindre 10 % de marge demande 60 M€ d’économies, soit environ 15 % des coûts du périmètre. Je recommande un centre de services partagés en deux vagues : finance et RH d’abord, où les gains sont les plus élevés, puis achats, immobilier et informatique. Clé de réussite : une gouvernance où les divisions sont clientes, avec des engagements de service mesurés, pour transformer leur résistance en exigence. Investissement à plafonner pour un retour en moins de trois ans.',
+        en: 'Reaching a 10% margin requires €60M of savings, about 15% of scope costs. I recommend a shared services centre in two waves: finance and HR first, where gains are highest, then procurement, real estate and IT. Key to success: governance that treats divisions as customers, with measured service commitments, turning resistance into demands. Cap the investment for a payback under three years.',
+      },
+    },
+  },
 ]

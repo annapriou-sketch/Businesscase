@@ -133,4 +133,13 @@ export default {
   'cases.status.done': 'Completed',
   'cases.count': '{n} of {total} cases',
   'cases.redo': 'Redo',
+  'nav.method': 'Method',
+  'method.title': 'Method',
+  'method.intro': 'Principles for tackling a case interview, pitfalls to avoid and a checklist to assess yourself after each case.',
+  'method.firstQuestions': 'First questions by case type',
+  'method.firstQuestionsIntro': 'Useful clarifying questions to get started, to adapt to each prompt.',
+  'method.selfCheck': 'Self-assessment checklist',
+  'method.selfCheckIntro': 'Review it after each case, alone or with your practice partner.',
+  'method.practice': 'Practise on a case',
+  'method.source': 'A synthesis of common consulting-interview practice, drawing in part on the candidate guide published by A.T. Kearney (2006).',
 }

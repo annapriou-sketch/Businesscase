@@ -1,6 +1,6 @@
 # Coaching Case
 
-Plateforme bilingue (FR/EN) de préparation aux entretiens de conseil : programme de 8 semaines, calcul mental chronométré, bibliothèque de 10 études de cas guidées en six étapes (filtres, recherche, exhibits en tableau ou en graphique), fit interview (méthode STAR), tests de raisonnement numérique et verbal, suivi de progression.
+Plateforme bilingue (FR/EN) de préparation aux entretiens de conseil : page Méthode (principes, pièges, grille d'auto-évaluation), programme de 8 semaines, calcul mental chronométré, bibliothèque de 15 études de cas guidées en six étapes (filtres, recherche, exhibits en tableau ou en graphique), fit interview (méthode STAR), tests de raisonnement numérique et verbal, suivi de progression.
 
 ## Démarrage
 
@@ -26,7 +26,7 @@ Chaque utilisateur ne voit que ses propres lignes, grâce aux règles RLS défin
 
 ```
 src/
-  main.js            routeur (#/dashboard, #/roadmap, #/drill, #/cases/:id, #/fit, #/tests/:id, #/profile)
+  main.js            routeur (#/dashboard, #/method, #/roadmap, #/drill, #/cases/:id, #/fit, #/tests/:id, #/profile)
   styles.css         thème (clair/sombre via prefers-color-scheme)
   lib/
     i18n.js          traductions, t() pour l'interface, tr() pour le contenu {fr, en}
@@ -39,6 +39,7 @@ src/
   content/
     cases.js         banque de cas
     fit.js           banque de questions fit
+    method.js        page Méthode
     roadmap.js       programme de 8 semaines
     tests.js         tests de raisonnement numérique et verbal
   views/             un fichier par écran

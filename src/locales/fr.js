@@ -133,4 +133,13 @@ export default {
   'cases.status.done': 'Terminés',
   'cases.count': '{n} cas sur {total}',
   'cases.redo': 'Refaire',
+  'nav.method': 'Méthode',
+  'method.title': 'Méthode',
+  'method.intro': 'Les principes pour aborder un entretien de cas, les pièges à éviter et une grille pour vous évaluer après chaque cas.',
+  'method.firstQuestions': 'Premières questions selon le type de cas',
+  'method.firstQuestionsIntro': 'Des questions de clarification utiles pour démarrer, à adapter à chaque énoncé.',
+  'method.selfCheck': 'Grille d’auto-évaluation',
+  'method.selfCheckIntro': 'À relire après chaque cas, seul ou avec votre binôme.',
+  'method.practice': 'S’entraîner sur un cas',
+  'method.source': 'Synthèse de pratiques courantes des entretiens de conseil, notamment inspirée du guide de préparation publié par A.T. Kearney (2006).',
 }

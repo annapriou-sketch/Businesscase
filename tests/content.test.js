@@ -78,6 +78,25 @@ describe('case bank', () => {
     const trend = 44 * 1.03 ** 5 + 16 * 1.2 ** 5 + 12 * 0.98 ** 5 + 8 * 1.15 ** 5
     expect(trend).toBeCloseTo(117.8, 0)
 
+    const utilia = 0.02 * 0.55 * 1200000 * 900 / (60000 * 7200) * 100
+    within(utilia, byId('van-maintenance'))
+
+    const armor = byId('private-label-biscuits')
+    const sales = (pl, share) => 2000 * (1 - pl) * share
+    within(((sales(0.30, 0.45) - sales(0.18, 0.40)) / sales(0.18, 0.40)) * 100, armor)
+    expect(armor.math.chart.series[0].values[0]).toBe(18)
+    expect(armor.math.chart.series[0].values.at(-1)).toBe(30)
+    expect(armor.math.chart.series[1].values.at(-1)).toBe(45)
+
+    const [central, regional] = [1, 2].map((col) => {
+      const r = byId('medtech-distribution').math.table.rows
+      return r[0][col] + (r[1][col] * r[2][col]) / 1e6 + 0.2 * r[3][col]
+    })
+    within(regional - central, byId('medtech-distribution'))
+
+    within(200000 * (65 - 28) / 1e6 - 200000 * 0.15 * 65 / 1e6, byId('engineering-offshoring'))
+    within((3000 * 0.02) / (3000 * 0.22 * 0.6) * 100, byId('shared-services'))
+
     const orders = byId('warehouse-delays').math.chart
     within(((orders.series[0].values.at(-1) - orders.reference.value) / orders.reference.value) * 100, byId('warehouse-delays'))
   })

@@ -182,7 +182,7 @@ export default function cases(root, { params }) {
           e.preventDefault()
           const raw = e.currentTarget.querySelector('input').value
           s.answers.math = raw
-          const ok = isCorrect({ answer: c.math.answer, tolerance: c.math.tolerance }, raw)
+          const ok = isCorrect({ answer: c.math.answer, tolerance: c.math.tolerance, absTolerance: c.math.absTolerance }, raw)
           q('[data-feedback]').innerHTML = `
             <p class="${ok ? 'ok' : 'ko'}">${esc(ok ? t('cases.correct') : t('cases.incorrect', { answer: `${fmt(c.math.answer, getLang())} ${c.math.unit}` }))}</p>
             <p class="muted">${esc(tr(c.math.explanation))}</p>`

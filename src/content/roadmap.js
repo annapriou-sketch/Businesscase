@@ -4,6 +4,7 @@ export default [
   { week: 1, title: { fr: 'Poser les bases', en: 'Lay the foundations' },
     goal: { fr: 'Comprendre le format des entretiens et établir votre niveau de départ.', en: 'Understand the interview format and set your baseline.' },
     tasks: [
+      { id: 'w1-method', label: { fr: 'Lire la page Méthode', en: 'Read the Method page' }, href: '#/method' },
       { id: 'w1-drill', label: { fr: 'Faire un premier calcul mental (mode mixte)', en: 'Do a first mental maths run (mixed mode)' }, href: '#/drill' },
       { id: 'w1-case', label: { fr: 'Terminer le cas VéloVille', en: 'Complete the VéloVille case' }, href: '#/cases/ebike-market' },
       { id: 'w1-why', label: { fr: 'Rédiger « Pourquoi le conseil ? »', en: 'Write "Why consulting?"' }, href: '#/fit' },
@@ -34,6 +35,7 @@ export default [
     tasks: [
       { id: 'w5-peer1', label: { fr: '2 cas en binôme (un comme candidat, un comme intervieweur)', en: '2 partner cases (one as candidate, one as interviewer)' } },
       { id: 'w5-redo', label: { fr: 'Refaire le cas où votre score était le plus faible', en: 'Redo the case with your lowest score' }, href: '#/cases' },
+      { id: 'w5-threat', label: { fr: 'Terminer le cas Biscuiterie Armor', en: 'Complete the Biscuiterie Armor case' }, href: '#/cases/private-label-biscuits' },
       { id: 'w5-drill', label: { fr: '3 sessions de calcul mental (mode croissance)', en: '3 mental maths sessions (growth mode)' }, href: '#/drill' },
     ] },
   { week: 6, title: { fr: 'Synthèse', en: 'Synthesis' },
@@ -48,6 +50,7 @@ export default [
     tasks: [
       { id: 'w7-mock', label: { fr: '2 simulations complètes de 45 minutes', en: '2 full 45-minute mock interviews' } },
       { id: 'w7-tests', label: { fr: 'Repasser les deux tests de raisonnement', en: 'Retake both reasoning tests' }, href: '#/tests' },
+      { id: 'w7-written', label: { fr: 'Traiter le cas Groupe Hexa comme un cas écrit : 60 min de préparation, 20 min de présentation', en: 'Handle the Groupe Hexa case as a written case: 60 min prep, 20 min presentation' }, href: '#/cases/shared-services' },
       { id: 'w7-gaps', label: { fr: 'Lister vos 3 points faibles et un plan pour chacun', en: 'List your 3 weak spots and a plan for each' } },
     ] },
   { week: 8, title: { fr: 'Derniers réglages', en: 'Final tuning' },

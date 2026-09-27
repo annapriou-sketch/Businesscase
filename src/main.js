@@ -11,9 +11,10 @@ import fit from './views/fit.js'
 import profile from './views/profile.js'
 import roadmap from './views/roadmap.js'
 import tests from './views/tests.js'
+import method from './views/method.js'
 
-const ROUTES = { dashboard, roadmap, drill, cases, fit, tests, profile }
-const NAV = ['dashboard', 'roadmap', 'drill', 'cases', 'fit', 'tests', 'profile']
+const ROUTES = { dashboard, method, roadmap, drill, cases, fit, tests, profile }
+const NAV = ['dashboard', 'method', 'roadmap', 'drill', 'cases', 'fit', 'tests', 'profile']
 
 const app = document.getElementById('app')
 let cleanup = null

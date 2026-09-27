@@ -237,3 +237,13 @@ details summary { cursor: pointer; font-weight: 600; color: var(--brand); }
   .chart-ref text { font-size: 20px; }
   .chart-series circle { r: 6px; }
 }
+
+/* Method */
+.toc { display: flex; flex-wrap: wrap; gap: 8px; }
+.toc a { font-size: .85rem; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; color: var(--muted); background: var(--surface); }
+.toc a:hover { color: var(--ink); border-color: var(--brand); }
+.method-section { scroll-margin-top: 90px; }
+.method-list { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+.exhibit.plain th { text-transform: none; letter-spacing: 0; font-size: .9rem; color: var(--ink); width: 34%; vertical-align: top; }
+.exhibit.plain td { text-align: left; font-family: var(--font-body); }
+.source { font-size: .85rem; }
