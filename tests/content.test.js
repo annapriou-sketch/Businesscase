@@ -24,8 +24,17 @@ describe('case bank', () => {
       }
       c.clarifications.forEach((q) => { expect(bilingual(q.q)).toBeTruthy(); expect(bilingual(q.a)).toBeTruthy() })
       expect(c.structure.fr.length).toBe(c.structure.en.length)
-      expect(c.math.table.headers.fr.length).toBe(c.math.table.headers.en.length)
-      c.math.table.rows.forEach((r) => expect(r.length).toBe(c.math.table.headers.fr.length))
+      expect(c.math.table || c.math.chart).toBeTruthy()
+      expect([1, 2, 3]).toContain(c.difficulty)
+      expect(bilingual(c.sector)).toBeTruthy()
+      if (c.math.table) {
+        expect(c.math.table.headers.fr.length).toBe(c.math.table.headers.en.length)
+        c.math.table.rows.forEach((r) => expect(r.length).toBe(c.math.table.headers.fr.length))
+      }
+      if (c.math.chart) {
+        expect(['bar', 'line']).toContain(c.math.chart.type)
+        c.math.chart.series.forEach((sr) => expect(sr.values.length).toBe(c.math.chart.labels.length))
+      }
       c.brainstorm.ideas.forEach((idea) => { expect(bilingual(idea.label)).toBeTruthy(); expect(idea.keywords.length).toBeGreaterThan(0) })
     }
   })
@@ -39,6 +48,38 @@ describe('case bank', () => {
     expect((rawDelta / profitDrop) * 100).toBeCloseTo(bakery.math.answer, 0)
     expect(300000 * 0.6 * 0.5 * 0.1 * 50 * 12 / 1e6).toBeCloseTo(CASES.find((c) => c.id === 'ebike-market').math.answer)
     expect((20 * 4000) / 15).toBeCloseTo(CASES.find((c) => c.id === 'gym-premium').math.answer, 1)
+  })
+  it('has math answers consistent for the extended bank', () => {
+    const byId = (id) => CASES.find((c) => c.id === id)
+    const within = (value, c) => expect(Math.abs(value - c.math.answer)).toBeLessThanOrEqual(Math.abs(c.math.answer) * c.math.tolerance)
+
+    within(900000 * 0.8 * 0.25 * 0.4 / 10, byId('ev-chargers'))
+
+    const ferry = byId('ferry-profit').math.table.rows
+    const [rev22, rev25] = [1, 2].map((col) => ferry[0][col] + ferry[1][col])
+    const [cost22, cost25] = [1, 2].map((col) => ferry.slice(2).reduce((s, r) => s + r[col], 0))
+    expect(rev22 - cost22).toBeCloseTo(18)
+    expect(rev25 - cost25).toBeCloseTo(9.2)
+    within(((rev22 - rev25) / ((rev22 - cost22) - (rev25 - cost25))) * 100, byId('ferry-profit'))
+    const perPax = byId('ferry-profit').math.chart.series
+    expect(perPax[0].values[0] * 1.2).toBeCloseTo(ferry[0][1])
+    expect(perPax[0].values[3] * 1.2).toBeCloseTo(ferry[0][2])
+    expect(perPax[1].values[0] * 1.2).toBeCloseTo(ferry[1][1])
+    expect(perPax[1].values[3] * 1.2).toBeCloseTo(ferry[1][2])
+
+    within(12 * 9 + 3 * 9 - 6, byId('lab-acquisition'))
+    within(4 * 40 * 0.25, byId('saas-pricing'))
+
+    const rooms = byId('hospital-or').math.chart.series[0].values
+    expect(rooms.reduce((a, b) => a + b, 0) / rooms.length).toBe(60)
+    within(8 * 10 * 250 * 0.2, byId('hospital-or'))
+
+    within((2 ** (1 / 5) - 1) * 100, byId('cosmetics-growth'))
+    const trend = 44 * 1.03 ** 5 + 16 * 1.2 ** 5 + 12 * 0.98 ** 5 + 8 * 1.15 ** 5
+    expect(trend).toBeCloseTo(117.8, 0)
+
+    const orders = byId('warehouse-delays').math.chart
+    within(((orders.series[0].values.at(-1) - orders.reference.value) / orders.reference.value) * 100, byId('warehouse-delays'))
   })
 })
 

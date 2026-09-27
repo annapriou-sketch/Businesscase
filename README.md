@@ -1,6 +1,6 @@
 # Coaching Case
 
-Plateforme bilingue (FR/EN) de préparation aux entretiens de conseil : programme de 8 semaines, calcul mental chronométré, bibliothèque d'études de cas guidées en six étapes (filtres, recherche), fit interview (méthode STAR), tests de raisonnement numérique et verbal, suivi de progression.
+Plateforme bilingue (FR/EN) de préparation aux entretiens de conseil : programme de 8 semaines, calcul mental chronométré, bibliothèque de 10 études de cas guidées en six étapes (filtres, recherche, exhibits en tableau ou en graphique), fit interview (méthode STAR), tests de raisonnement numérique et verbal, suivi de progression.
 
 ## Démarrage
 
@@ -34,6 +34,7 @@ src/
     store.js         progression : Supabase si configuré, localStorage sinon
     drill.js         générateur et correcteur du calcul mental (pur, testé)
     cases.js         aides du lecteur de cas (pur, testé)
+    chart.js         graphiques SVG des exhibits (barres, courbes, ligne de référence)
   locales/           fr.js, en.js (mêmes clés, vérifié par les tests)
   content/
     cases.js         banque de cas
@@ -47,7 +48,7 @@ tests/               Vitest
 
 ## Ajouter du contenu
 
-- **Un cas** : ajouter un objet dans `src/content/cases.js`, en suivant la forme des cas existants. Chaque texte est un objet `{ fr, en }`. Les tests vérifient que les deux langues sont complètes.
+- **Un cas** : ajouter un objet dans `src/content/cases.js`, en suivant la forme des cas existants. Chaque texte est un objet `{ fr, en }`. L'exhibit de l'étape calcul peut être un tableau (`math.table`), un graphique (`math.chart`, voir `ferry-profit`, `hospital-or` ou `warehouse-delays`), ou les deux. Les tests vérifient que les deux langues sont complètes ; ajoutez aussi un test qui recalcule la réponse à partir de l'exhibit.
 - **Une question fit** : ajouter une entrée dans `QUESTIONS` (`src/content/fit.js`).
 - **Une tâche du programme** : ajouter une entrée dans la semaine voulue (`src/content/roadmap.js`), avec un `id` unique et, en option, un lien `href` vers un module.
 - **Une question de test** : ajouter une entrée dans `TESTS.numerical` ou `TESTS.verbal` (`src/content/tests.js`). `answer` est l'index de la bonne option.

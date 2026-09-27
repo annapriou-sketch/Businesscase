@@ -3,6 +3,7 @@ import { STEPS, coveredIdeas, averageScore } from '../lib/cases.js'
 import { isCorrect, fmt } from '../lib/drill.js'
 import { load, save, logActivity } from '../lib/store.js'
 import { esc } from '../lib/dom.js'
+import { renderChart } from '../lib/chart.js'
 import CASES from '../content/cases.js'
 
 const RECO_SECONDS = 60
@@ -136,10 +137,11 @@ export default function cases(root, { params }) {
           </details>${selfScore('structure')}`,
         math: () => `
           <p class="lead">${esc(tr(c.math.question))}</p>
-          <div class="table-wrap"><table class="exhibit">
+          ${c.math.table ? `<div class="table-wrap"><table class="exhibit">
             <thead><tr>${tr(c.math.table.headers).map((h) => `<th>${esc(h)}</th>`).join('')}</tr></thead>
             <tbody>${c.math.table.rows.map((r) => `<tr>${r.map((cell) => `<td>${esc(typeof cell === 'number' ? fmt(cell, getLang()) : tr(cell))}</td>`).join('')}</tr>`).join('')}</tbody>
-          </table></div>
+          </table></div>` : ''}
+          ${c.math.chart ? renderChart(c.math.chart, tr, (v) => fmt(v, getLang())) : ''}
           <form class="inline-form" data-math>
             <input inputmode="decimal" autocomplete="off" value="${esc(s.answers.math || '')}" aria-label="${esc(t('drill.answer'))}">
             <span class="mono">${esc(c.math.unit)}</span>

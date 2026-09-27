@@ -213,3 +213,27 @@ details summary { cursor: pointer; font-weight: 600; color: var(--brand); }
   .week summary { grid-template-columns: 1fr auto; }
   .week-num { grid-column: 1 / -1; }
 }
+
+/* Charts */
+.chart { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.chart svg { width: 100%; height: auto; overflow: visible; }
+.chart-tick line { stroke: var(--line); stroke-width: 1; }
+.chart-tick text, .chart-label { fill: var(--muted); font: 12px var(--font-mono); }
+.chart-value { fill: var(--ink); font: 11px var(--font-mono); }
+.chart-series.s0 rect, .chart-series.s0 circle, .swatch.s0 { fill: var(--brand); background: var(--brand); }
+.chart-series.s1 rect, .chart-series.s1 circle, .swatch.s1 { fill: var(--accent); background: var(--accent); }
+.chart-series.s2 rect, .chart-series.s2 circle, .swatch.s2 { fill: var(--muted); background: var(--muted); }
+.chart-series.s0 polyline { stroke: var(--brand); stroke-width: 2.5; }
+.chart-series.s1 polyline { stroke: var(--accent); stroke-width: 2.5; }
+.chart-ref line { stroke: var(--ko); stroke-width: 1.5; stroke-dasharray: 6 4; }
+.chart-ref text { fill: var(--ko); font: 600 12px var(--font-body); }
+.chart-legend { list-style: none; display: flex; gap: 16px; padding: 0; margin: 0; font-size: .85rem; color: var(--muted); }
+.chart-legend li { display: flex; align-items: center; gap: 6px; }
+.swatch { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+/* The SVG scales down on phones: enlarge text in viewBox units to stay legible. */
+@media (max-width: 720px) {
+  .chart-value { display: none; }
+  .chart-tick text, .chart-label { font-size: 20px; }
+  .chart-ref text { font-size: 20px; }
+  .chart-series circle { r: 6px; }
+}
