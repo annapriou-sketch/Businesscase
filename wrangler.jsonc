@@ -1,0 +1,9 @@
+// Cloudflare Workers: serve the Vite build (dist/) as static assets.
+// Build command in Cloudflare: npm run build — Deploy command: npx wrangler deploy
+{
+  "name": "businesscasescpo",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./dist"
+  }
+}

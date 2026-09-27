@@ -56,4 +56,10 @@ tests/               Vitest
 
 ## Déploiement
 
-`netlify.toml` est prêt : build `npm run build`, dossier publié `dist`. Déclarer les variables `VITE_SUPABASE_*` dans les paramètres du site.
+**Cloudflare (Workers & Pages)** : `wrangler.jsonc` publie le dossier `dist` comme site statique.
+Dans Settings → Build : *Build command* `npm run build`, *Deploy command* `npx wrangler deploy`.
+Le champ `name` de `wrangler.jsonc` doit correspondre au nom du projet Cloudflare (`businesscasescpo`).
+
+**Netlify** : `netlify.toml` est prêt (build `npm run build`, dossier publié `dist`).
+
+Dans les deux cas, déclarer les variables `VITE_SUPABASE_*` dans les paramètres du projet pour activer les comptes en ligne.
